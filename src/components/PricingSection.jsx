@@ -80,7 +80,8 @@ export default function PricingSection() {
              <div className="mt-6 flex gap-3 justify-center">
   <MagneticButton
     as="a"
-    href="mailto:tony@reneksites.com"
+    href="mailto:tonkatabachev@gmail.com"
+
     className={`rounded-full ${
       plan.highlight
         ? "bg-emerald-500 text-white hover:bg-emerald-400"

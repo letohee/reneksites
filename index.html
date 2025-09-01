@@ -1,13 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+
+    <!-- ✅ Title & Description -->
+    <title>RenekSites | Freelance Website Designer UK</title>
+    <meta
+      name="description"
+      content="Freelance web developer & computing graduate from NTU. I build fast, modern websites with crisp motion and clear messaging. Based in Nottingham, UK."
+    />
+
+    <!-- ✅ Open Graph (Facebook, LinkedIn) -->
+    <meta property="og:title" content="RenekSites | Freelance Website Designer UK" />
+    <meta
+      property="og:description"
+      content="Websites that feel premium and convert. Freelance web developer delivering clean UI, performance, and motion."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://reneksites.co.uk" />
+    <meta property="og:image" content="https://reneksites.co.uk/background.jpg" />
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RenekSites | Freelance Website Designer UK" />
+    <meta
+      name="twitter:description"
+      content="Fast, modern websites built to convert. Freelance website designer, Nottingham UK."
+    />
+    <meta name="twitter:image" content="https://reneksites.co.uk/background.jpg" />
+
+    <!-- ✅ Favicons -->
+    <link rel="icon" href="/logo.png" type="image/png" />
+
+    <!-- ✅ Structured Data: Person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Tony (RenekSites)",
+        "givenName": "Tony",
+        "jobTitle": "Freelance Web Developer",
+        "description": "Freelance web developer building fast, modern websites with crisp motion and clear messaging. Nottingham, UK.",
+        "url": "https://reneksites.co.uk",
+        "image": "https://reneksites.co.uk/avatar.png",
+        "email": "mailto:tonkatabachev@gmail.com",
+        "telephone": "+44 7908 894226",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "RenekSites",
+          "url": "https://reneksites.co.uk",
+          "logo": "https://reneksites.co.uk/logo.png"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nottingham",
+          "addressRegion": "England",
+          "addressCountry": "GB"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/antoan-bachev-734281261/"
+        ]
+      }
+    </script>
+
+    <!-- ✅ Structured Data: Professional Service -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "RenekSites",
+        "url": "https://reneksites.co.uk",
+        "logo": "https://reneksites.co.uk/logo.png",
+        "image": "https://reneksites.co.uk/background.jpg",
+        "description": "Website design and development for small businesses and startups. Clean UI, performance, SEO and motion.",
+        "areaServed": "GB",
+        "priceRange": "££",
+        "telephone": "+44 7908 894226",
+        "email": "mailto:tonkatabachev@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nottingham",
+          "addressRegion": "England",
+          "addressCountry": "GB"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/antoan-bachev-734281261/"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Web Design Packages",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Starter",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "GBP",
+                "price": "450"
+              },
+              "description": "Landing page: 1–3 sections, mobile responsive, basic SEO, deployed to Vercel."
+            },
+            {
+              "@type": "Offer",
+              "name": "Business",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "GBP",
+                "price": "950"
+              },
+              "description": "Up to 5 pages, custom design with animations, form/booking, SEO + analytics."
+            },
+            {
+              "@type": "Offer",
+              "name": "Premium",
+              "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "GBP",
+                "price": "1800"
+              },
+              "description": "Custom build, advanced motion, CMS/blog & integrations, priority support."
+            }
+          ]
+        }
+      }
+    </script>
+
+    <!-- ✅ Structured Data: WebSite -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "RenekSites",
+        "url": "https://reneksites.co.uk",
+        "potentialAction": {
+          "@type": "ContactAction",
+          "target": "mailto:tonkatabachev@gmail.com",
+          "name": "Email Tony"
+        },
+        "inLanguage": "en-GB"
+      }
+    </script>
   </head>
   <body>
-  <div id="root"></div>                         <!-- must exist -->
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

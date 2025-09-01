@@ -18,7 +18,7 @@ export default function Header() {
         <div className="flex items-center gap-6">
           <a href="#home" className="group flex items-center gap-3">
             <span className="relative inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 p-1.5 shadow">
-              <img src="/logo.png" className="h-12 w-12" alt="RenekSites logo" />
+              <img src="/logo.png" className="h-24 w-24" alt="RenekSites logo" />
             </span>
             <span className="text-xl font-semibold tracking-tight">
               renek<span className="text-emerald-400">sites</span>
