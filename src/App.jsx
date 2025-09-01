@@ -11,6 +11,8 @@ import AboutBlock from "./components/AboutBlock";
 import Footer from "./components/Footer";
 import PricingSection from "./components/PricingSection";
 import FAQSection from "./components/FAQSection";
+import ContactSection from "./components/ContactSection";
+import StickyCallButton from "./components/StickyCallButton";
 
 
 import { Layout, Zap, Workflow, BookUser, Rocket, BadgeCheck } from "lucide-react";
@@ -52,6 +54,7 @@ export default function App() {
           <WorkCard title="Experimental UI – Glass + Motion" href="#" image="/ico.jpg" tags={["Framer Motion","Particles","Glass UI"]} />
         </div>
       </Section>
+<StickyCallButton />
 
       {/* services */}
       <Section id="services" className="py-20">
@@ -97,24 +100,7 @@ export default function App() {
 <PricingSection />
 <FAQSection />
 
-      {/* contact & footer */}
-      <Section id="contact" className="pb-24 pt-10">
-        {/* keep your existing CTA component here if you later split it out */}
-        <div className="mx-auto max-w-5xl px-4">
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-emerald-500/20 via-emerald-600/10 to-transparent p-10">
-            <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-              <div>
-                <h3 className="text-2xl font-semibold tracking-tight">Ready to launch something you’re proud of?</h3>
-                <p className="mt-1 text-white/75">Let’s build a beautiful, fast website that actually sells.</p>
-              </div>
-              <div className="flex gap-3">
-                <a href="mailto:tonkatabachev@gmail.com" className="rounded-full bg-white px-5 py-3 text-[#0b3d2e] hover:bg-emerald-100">Email Tony</a>
-                <a href="tel:+447908894226" className="rounded-full border border-white/20 bg-white/5 px-5 py-3 text-white hover:bg-white/10">Call</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
+<ContactSection />
 
       <Footer />
     </div>
