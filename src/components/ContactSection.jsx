@@ -15,37 +15,53 @@ export default function ContactSection() {
   const [status, setStatus] = useState({ loading: false, ok: false, err: "" });
   const formRef = useRef(null);
 
-  async function onSubmit(e) {
-    e.preventDefault();
-    setStatus({ loading: true, ok: false, err: "" });
+async function onSubmit(e) {
+  e.preventDefault();
+  setStatus({ loading: true, ok: false, err: "" });
 
-    const fd = new FormData(e.currentTarget);
-    // Simple honeypot check
-    if (fd.get("company_website")) {
-      setStatus({ loading: false, ok: true, err: "" }); // silently succeed for bots
-      e.currentTarget.reset();
-      return;
+  const fd = new FormData(e.currentTarget);
+
+  // Honeypot
+  if (fd.get("company_website")) {
+    setStatus({ loading: false, ok: true, err: "" });
+    e.currentTarget.reset();
+    return;
+  }
+
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: fd,
+    });
+
+    // Some Formspree responses are 204 or have no JSON body.
+    let data = null;
+    try {
+      const ct = res.headers.get("content-type") || "";
+      if (ct.includes("application/json")) {
+        data = await res.json();
+      }
+    } catch {
+      /* ignore JSON parse error */
     }
 
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: fd,
-      });
-      const data = await res.json();
-
-      if (res.ok) {
-        setStatus({ loading: false, ok: true, err: "" });
-        e.currentTarget.reset();
-      } else {
-        setStatus({ loading: false, ok: false, err: data.error || "Something went wrong. Please try again." });
-      }
-    }catch (err) {
-  console.error("Form submit error:", err);
-  setStatus({ loading: false, ok: false, err: "Network error. Please try again." });
-}
+    if (res.ok) {
+      setStatus({ loading: false, ok: true, err: "" });
+      e.currentTarget.reset();
+    } else {
+      const msg =
+        data?.errors?.[0]?.message ||
+        data?.error ||
+        `Something went wrong (HTTP ${res.status}). Please try again.`;
+      setStatus({ loading: false, ok: false, err: msg });
+    }
+  } catch (err) {
+    console.error("Form submit error:", err);
+    setStatus({ loading: false, ok: false, err: "Network error. Please try again." });
   }
+}
+
 
   return (
     <section id="contact" className="pb-24 pt-10">
