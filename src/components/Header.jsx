@@ -16,14 +16,20 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 backdrop-blur supports-[backdrop-filter]:bg-[#081f18]/55">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
         <div className="flex items-center gap-6">
+          {/* Brand + Logo */}
           <a href="#home" className="group flex items-center gap-3">
-            <span className="relative inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 p-1.5 shadow">
-              <img src="/logo.png" className="h-24 w-24" alt="RenekSites logo" />
-            </span>
+            {/* Tailwind doesn’t have h-18 → use h-16 or h-20 */}
+            <img
+              src="/logo.png"
+              className="h-16 w-auto md:h-20"
+              alt="RenekSites logo"
+            />
             <span className="text-xl font-semibold tracking-tight">
-              renek<span className="text-emerald-400">sites</span>
+              Renek<span className="text-emerald-400">sites</span>
             </span>
           </a>
+
+          {/* Navigation links */}
           <nav className="hidden items-center gap-2 md:flex">
             {NAV.map((n) => (
               <a
@@ -36,8 +42,14 @@ export default function Header() {
             ))}
           </nav>
         </div>
+
+        {/* CTA */}
         <div className="hidden md:block">
-          <MagneticButton as="a" href="#contact" className="rounded-full bg-emerald-500 text-sm text-white hover:bg-emerald-400">
+          <MagneticButton
+            as="a"
+            href="#contact"
+            className="rounded-full bg-emerald-500 text-sm text-white hover:bg-emerald-400"
+          >
             <Phone size={16} /> Book a free call
           </MagneticButton>
         </div>

@@ -128,19 +128,76 @@
 
     <!-- ✅ Structured Data: WebSite -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "RenekSites",
-        "url": "https://reneksites.co.uk",
-        "potentialAction": {
-          "@type": "ContactAction",
-          "target": "mailto:tonkatabachev@gmail.com",
-          "name": "Email Tony"
-        },
-        "inLanguage": "en-GB"
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "RenekSites",
+  "url": "https://reneksites.co.uk",
+  "inLanguage": "en-GB",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://reneksites.co.uk/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does a typical website take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Starter landing pages are usually 1–2 weeks. Business sites (3–5 pages) are 2–4 weeks depending on content and feedback speed."
       }
-    </script>
+    },
+    {
+      "@type": "Question",
+      "name": "What does your pricing include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Design + build in React/Tailwind, responsive layouts, performance pass, basic SEO setup, deploy to Vercel, and a short handover video."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer revisions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes—every package includes a feedback round per milestone (design and build). Extra rounds are possible if needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who hosts the site?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "I deploy to Vercel (fast, reliable, global CDN). You can keep ownership and billing on your own Vercel account if you prefer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I own the site after launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes—100%. You’ll receive the GitHub repo and full deployment access."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do we start?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Email tonkatabachev@gmail.com or call +44 7908 894226 for a quick intro call to scope goals and timelines."
+      }
+    }
+  ]
+}
+</script>
+
   </head>
   <body>
     <div id="root"></div>

@@ -11,7 +11,7 @@ export default function AboutBlock() {
       <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
         <img src="/avatar.png" alt="Tony portrait" className="mx-auto h-72 w-auto object-contain" />
         <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
-          <div className="rounded-2xl bg-[#062017]/70 p-4"><p className="font-medium">Based in</p><p className="text-white/70">Nottingham, UK</p></div>
+          <div className="rounded-2xl bg-[#062017]/70 p-4"><p className="font-medium">Based in</p><p className="text-white/70">London, UK</p></div>
           <div className="rounded-2xl bg-[#062017]/70 p-4"><p className="font-medium">Degree</p><p className="text-white/70">BSc (Hons) Computing</p></div>
           <div className="rounded-2xl bg-[#062017]/70 p-4"><p className="font-medium">Specialty</p><p className="text-white/70">Web & Motion</p></div>
           <div className="rounded-2xl bg-[#062017]/70 p-4"><p className="font-medium">Freelance</p><p className="text-white/70">Available now</p></div>

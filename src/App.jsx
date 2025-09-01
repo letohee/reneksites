@@ -10,6 +10,8 @@ import ProcessCard from "./components/ProcessCard";
 import AboutBlock from "./components/AboutBlock";
 import Footer from "./components/Footer";
 import PricingSection from "./components/PricingSection";
+import FAQSection from "./components/FAQSection";
+
 
 import { Layout, Zap, Workflow, BookUser, Rocket, BadgeCheck } from "lucide-react";
 
@@ -45,9 +47,9 @@ export default function App() {
       <Section id="work" className="py-20">
         <SectionHeader eyebrow="Selected Work" title="Clean, fast, conversion-ready" subtitle="A quick peek at builds and experiments." />
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
-          <WorkCard title="ASAP Mobile Battery – Landing" href="https://asap-mb-site-86k4.vercel.app/" image="/background.jpg" tags={["Next.js","Tailwind","Animation"]} />
-          <WorkCard title="Battery Lookup iOS App" href="#" image="/background.jpg" tags={["SwiftUI","REST API","MVVM"]} />
-          <WorkCard title="Experimental UI – Glass + Motion" href="#" image="/background.jpg" tags={["Framer Motion","Particles","Glass UI"]} />
+          <WorkCard title="ASAP Mobile Battery – Landing" href="https://asap-mb-site-86k4.vercel.app/" image="/asap.jpg" tags={["Next.js","Tailwind","Animation"]} />
+          <WorkCard title="Battery Lookup iOS App" href="#" image="/mobile.jpg" tags={["SwiftUI","REST API","MVVM"]} />
+          <WorkCard title="Experimental UI – Glass + Motion" href="#" image="/ico.jpg" tags={["Framer Motion","Particles","Glass UI"]} />
         </div>
       </Section>
 
@@ -93,6 +95,7 @@ export default function App() {
         </div>
       </Section>
 <PricingSection />
+<FAQSection />
 
       {/* contact & footer */}
       <Section id="contact" className="pb-24 pt-10">
