@@ -96,7 +96,7 @@ export function HeroShowcase() {
       className="relative"
     >
       <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
-        <img src="/avatar.png" alt="Tony" className="mx-auto h-64 w-auto object-contain" />
+        <img src="/logo.png" alt="Tony" className="mx-auto h-64 w-auto object-contain" />
         <div className="mt-4 rounded-2xl bg-[#062017]/70 p-4 text-sm text-white/80">
           <p className="mb-2 flex items-center gap-2">
             <BadgeCheck className="text-emerald-300" /> BSc (Hons) Computing — NTU
