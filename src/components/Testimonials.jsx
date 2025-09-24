@@ -6,13 +6,13 @@ const cards = [
   {
     name: "ASAP Mobile Car Battery",
     role: "Owner",
-    site: "https://asapmobilecarbatteryreplacement.co.uk",
-    logo: "/1.jpg",     // or upload a real client logo to /public
-    avatar: "/avatar.png", // optional headshot
+    site: "https://www.asapmobilebatteryservice.co.uk/",
+    logo: "/1.jpg",           // replace with real client logo when you have it
+    avatar: "/avatar.png",
     rating: 5,
     quote:
       "Tony was fast and clear from day one. He turned our ideas into a clean website and kept us updated the whole way. Excited to launch fully soon.",
-    status: "Verified", // shows a chip
+    status: "Verified",
   },
 ];
 
@@ -41,26 +41,26 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* === Trustpilot Embed Placeholder === */}
-<div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
-  <p className="mb-2 text-sm text-white/70">Trustpilot Reviews</p>
-  <a
-    href="https://uk.trustpilot.com/review/reneksites.co.uk"
-    target="_blank"
-    rel="noreferrer"
-    className="inline-block rounded-full border border-white/20 bg-emerald-500 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400"
-  >
-    See reviews on Trustpilot
-  </a>
-</div>
+        {/* Trustpilot CTA (kept lightweight, no paid widget required) */}
+        <div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
+          <p className="mb-2 text-sm text-white/70">Trustpilot Reviews</p>
+          <a
+            href="https://uk.trustpilot.com/review/reneksites.co.uk"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block rounded-full border border-white/20 bg-emerald-500 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400"
+          >
+            See reviews on Trustpilot
+          </a>
+        </div>
 
+        {/* Google Reviews via Elfsight (transparent styling handled by your custom CSS in the Elfsight dashboard) */}
+        <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+          <p className="mb-2 text-center text-sm text-white/70">Google Reviews</p>
+          <div className="elfsight-app-51b7ad8b-11f2-4cf2-a96d-be26dc659823" />
+        </div>
 
-<div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6">
-  <div class="elfsight-app-51b7ad8b-11f2-4cf2-a96d-be26dc659823"></div>
-</div>
-
-
-        {/* === Verified Client Testimonial === */}
+        {/* Verified client testimonial */}
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           {cards.map((c, i) => (
             <motion.figure

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RenekSites — Final Year Project Report</title>
+  <meta name="robots" content="noindex" />
+  <style>
+    html,body{height:100%;margin:0;background:#0b1f19;}
+    .wrap{
+      height:100%;display:flex;flex-direction:column;gap:8px;
+      max-width:1200px;margin:0 auto;padding:16px;
+      color:#e7f6ef;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    }
+    header{display:flex;justify-content:space-between;align-items:center}
+    a.btn{
+      display:inline-flex;gap:.5rem;align-items:center;
+      padding:.5rem .8rem;border-radius:9999px;
+      border:1px solid rgba(255,255,255,.2);
+      background:rgba(255,255,255,.05);color:#fff;text-decoration:none;
+    }
+    a.btn:hover{background:rgba(255,255,255,.1)}
+    iframe{flex:1;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:#062017}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1 style="font-size:1rem;margin:0;opacity:.85">Final Year Project Report (PDF)</h1>
+      <nav>
+        <a class="btn" href="/" aria-label="Back to RenekSites">← Back to RenekSites</a>
+        <a class="btn" href="/docs/fyp-report.pdf" download>Download PDF</a>
+      </nav>
+    </header>
+    <!-- Update the PDF path if you name it differently -->
+    <iframe src="/docs/fyp-report.pdf" title="FYP Report PDF" width="100%" height="100%"></iframe>
+  </div>
+</body>
+</html>
