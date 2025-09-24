@@ -1,8 +1,13 @@
 // /api/google-reviews.js
+// Google Places -> clean JSON for the client.
+// Works on Vercel serverless. Add env vars in Vercel Settings.
+/* eslint-env node */
 
 export default async function handler(req, res) {
   try {
+    // eslint-disable-next-line no-undef
     const placeId = process.env.GOOGLE_PLACE_ID;
+    // eslint-disable-next-line no-undef
     const key = process.env.GOOGLE_MAPS_API_KEY;
 
     if (!placeId || !key) {
@@ -10,26 +15,28 @@ export default async function handler(req, res) {
         ok: false,
         reviews: null,
         reason: "Missing env vars",
-        hint: "Set GOOGLE_PLACE_ID and GOOGLE_MAPS_API_KEY in Vercel > Settings > Environment Variables (for Preview & Production).",
+        hint:
+          "Set GOOGLE_PLACE_ID and GOOGLE_MAPS_API_KEY in Vercel > Project > Settings > Environment Variables.",
       });
     }
 
-    const params = new URLSearchParams({
+    // options (mirror your old habits):
+    // ?lang=en   (default en)
+    // ?n=5       (default 6)
+    // ?g=1       (no-op; included because you mentioned it)
+    const urlParams = new URLSearchParams({
       place_id: placeId,
       fields:
         "rating,user_ratings_total,reviews(profile_photo_url,author_name,rating,text,relative_time_description)",
       key,
-      // Optional: force English reviews (helps consistency)
-      language: "en",
+      language: req.query.lang || "en",
     });
 
-    const url = `https://maps.googleapis.com/maps/api/place/details/json?${params.toString()}`;
-
+    const url = `https://maps.googleapis.com/maps/api/place/details/json?${urlParams.toString()}`;
     const gRes = await fetch(url, { cache: "no-store" });
     const data = await gRes.json();
 
-    // return raw for debug if ?debug=1
-    if (req.query?.debug || req.url.includes("debug=1")) {
+    if (req.query.debug || req.query.g === "debug") {
       return res.status(200).json({ ok: gRes.ok, google_status: data.status, data });
     }
 
@@ -39,13 +46,12 @@ export default async function handler(req, res) {
         reviews: null,
         reason: data.status || "Error",
         error_message: data.error_message || null,
-        hint:
-          "Check API key validity, billing enabled, Places API enabled, and API restrictions (must allow Places API).",
       });
     }
 
+    const limit = Math.max(1, Math.min(10, parseInt(req.query.n || "6", 10)));
     const list =
-      (data.result?.reviews || []).slice(0, 6).map((r) => ({
+      (data.result?.reviews || []).slice(0, limit).map((r) => ({
         author: r.author_name,
         rating: r.rating,
         text: r.text,
@@ -53,7 +59,7 @@ export default async function handler(req, res) {
         photo: r.profile_photo_url || null,
       })) || [];
 
-    // Cache for 12h at the edge; allow stale-while-revalidate for 1d
+    // Cache at edge for 12h, allow stale for 1 day
     res.setHeader("Cache-Control", "s-maxage=43200, stale-while-revalidate=86400");
     return res.status(200).json({ ok: true, reviews: list });
   } catch (e) {

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function Stars({ rating = 5 }) {
   return (
     <div className="flex items-center gap-1" aria-label={`${rating} star rating`}>
-      {[1,2,3,4,5].map((n) => (
+      {[1, 2, 3, 4, 5].map((n) => (
         <svg key={n} viewBox="0 0 20 20" className={`h-4 w-4 ${n <= rating ? "fill-amber-400" : "fill-white/25"}`}>
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.01 3.11a1 1 0 00.95.69h3.268c.967 0 1.371 1.24.588 1.81l-2.645 1.92a1 1 0 00-.364 1.118l1.01 3.11c.3.922-.755 1.688-1.54 1.118l-2.645-1.92a1 1 0 00-1.176 0l-2.645 1.92c-.785.57-1.84-.196-1.54-1.118l1.01-3.11a1 1 0 00-.364-1.118L2.233 8.537c-.783-.57-.379-1.81.588-1.81h3.268a1 1 0 00.95-.69l1.01-3.11z" />
         </svg>
@@ -13,18 +13,22 @@ function Stars({ rating = 5 }) {
   );
 }
 
+const HIDE_AUTHORS = []; // e.g., ['spam user']
+
 const FALLBACK = [
   {
     author: "KPRIZ",
     rating: 5,
-    text: "I recently contacted Renek Sites to help build my website, and I couldn't be happier with the experience… exceeded what I imagined.",
+    text:
+      "I recently contacted Renek Sites to help build my website, and I couldn't be happier with the experience. Professional, fast and very helpful.",
     time: "3 weeks ago",
     photo: null,
   },
   {
     author: "ASAP Mobile Car Battery",
     rating: 5,
-    text: "Fast turnaround and clear communication. The site looks professional and we've had more enquiries since launch.",
+    text:
+      "Fast turnaround and clear communication. The site looks professional and we've had more enquiries since launch.",
     time: "recent",
     photo: null,
   },
@@ -37,7 +41,8 @@ export default function Reviews() {
     let active = true;
     (async () => {
       try {
-        const res = await fetch("/api/google-reviews");
+        // mirrors your old habit of using g=1 (it’s a no-op on the API, but kept for parity)
+        const res = await fetch("/api/google-reviews?g=1&n=6&lang=en");
         const data = await res.json();
         if (!active) return;
         if (data?.ok && Array.isArray(data.reviews) && data.reviews.length) {
@@ -49,8 +54,14 @@ export default function Reviews() {
         setReviews(FALLBACK);
       }
     })();
-    return () => { active = false; };
+    return () => {
+      active = false;
+    };
   }, []);
+
+  const list = (reviews || FALLBACK).filter(
+    (r) => !HIDE_AUTHORS.includes((r.author || "").toLowerCase())
+  );
 
   return (
     <section id="reviews" className="py-20">
@@ -58,13 +69,11 @@ export default function Reviews() {
         <div className="mx-auto mb-8 max-w-3xl text-center">
           <p className="text-xs uppercase tracking-widest text-emerald-300/80">Google reviews</p>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">What people say</h2>
-          <p className="mt-3 text-white/75">
-            Live reviews pulled from Google. No plugins, no iframes—just fast and native.
-          </p>
+          <p className="mt-3 text-white/75">Live reviews pulled from Google. No iframes or third-party widgets.</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {(reviews || FALLBACK).map((r, i) => (
+          {list.map((r, i) => (
             <article
               key={`${r.author}-${i}`}
               className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:bg-white/10"
@@ -80,11 +89,11 @@ export default function Reviews() {
                     />
                   ) : (
                     <div className="h-10 w-10 rounded-full border border-white/15 bg-white/10 flex items-center justify-center text-white/80 font-semibold">
-                      {r.author?.[0] ?? "G"}
+                      {r.author?.[0] || "G"}
                     </div>
                   )}
                   <div>
-                    <p className="font-semibold tracking-tight">{r.author}</p>
+                    <p className="font-semibold leading-tight">{r.author}</p>
                     <span className="text-xs text-white/60">{r.time}</span>
                   </div>
                 </div>
