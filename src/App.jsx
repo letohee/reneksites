@@ -14,7 +14,7 @@ import FAQSection from "./components/FAQSection";
 import ContactSection from "./components/ContactSection";
 import StickyCallButton from "./components/StickyCallButton";
 import AnalyticsShowcase from "./components/AnalyticsShowcase";
-import Testimonials from "./components/Testimonials";
+import Testimonials from "./components/Reviews";
 
 
 import { Layout, Zap, Workflow, BookUser, Rocket, BadgeCheck } from "lucide-react";
@@ -105,11 +105,11 @@ export default function App() {
           ))}
         </div>
       </Section>
-      <Testimonials/>
+      
       <AnalyticsShowcase />
 <PricingSection />
 <FAQSection />
-
+<Reviews/>
 <ContactSection />
 
       <Footer />
