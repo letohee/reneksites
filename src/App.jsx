@@ -104,8 +104,8 @@ export default function App() {
             </div>
           ))}
         </div>
-
       </Section>
+      <Testimonials/>
       <AnalyticsShowcase />
 <PricingSection />
 <FAQSection />

@@ -1,18 +1,18 @@
 import { motion } from "framer-motion";
 import { Quote, ArrowUpRight } from "lucide-react";
 
+// Example verified testimonial (replace when real one comes in)
 const cards = [
   {
-    // Placeholder: replace when the client sends the real quote
     name: "ASAP Mobile Car Battery",
     role: "Owner",
     site: "https://asapmobilecarbatteryreplacement.co.uk",
-    logo: "/logo.png",                // or drop a client logo at /public/asap-logo.png
-    avatar: "/avatar.png",            // optional headshot if you get one
+    logo: "/1.jpg",     // or upload a real client logo to /public
+    avatar: "/avatar.png", // optional headshot
     rating: 5,
     quote:
       "Tony was fast and clear from day one. He turned our ideas into a clean website and kept us updated the whole way. Excited to launch fully soon.",
-    status: "Coming soon",            // shows a small chip (remove later)
+    status: "Verified", // shows a chip
   },
 ];
 
@@ -37,10 +37,30 @@ export default function Testimonials() {
             Proof beats promises.
           </h2>
           <p className="mt-3 text-white/75">
-            A quick snapshot from recent work. More reviews will appear here as projects ship.
+            Verified client feedback alongside reviews from trusted platforms.
           </p>
         </div>
 
+        {/* === Trustpilot Embed Placeholder === */}
+<div className="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
+  <p className="mb-2 text-sm text-white/70">Trustpilot Reviews</p>
+  <a
+    href="https://uk.trustpilot.com/review/reneksites.co.uk"
+    target="_blank"
+    rel="noreferrer"
+    className="inline-block rounded-full border border-white/20 bg-emerald-500 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400"
+  >
+    See reviews on Trustpilot
+  </a>
+</div>
+
+
+<div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6">
+  <div class="elfsight-app-51b7ad8b-11f2-4cf2-a96d-be26dc659823"></div>
+</div>
+
+
+        {/* === Verified Client Testimonial === */}
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           {cards.map((c, i) => (
             <motion.figure
@@ -51,10 +71,7 @@ export default function Testimonials() {
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
             >
-              {/* corner quote icon */}
               <Quote className="absolute -right-2 -top-2 h-10 w-10 rotate-12 text-emerald-400/25" />
-
-              {/* header */}
               <div className="flex items-center gap-4">
                 <img
                   src={c.logo}
@@ -75,19 +92,14 @@ export default function Testimonials() {
                 </a>
               </div>
 
-              {/* chip (remove once live) */}
               {c.status && (
                 <span className="mt-3 inline-block rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-white/70">
                   {c.status}
                 </span>
               )}
 
-              {/* quote */}
-              <blockquote className="mt-3 text-white/85">
-                “{c.quote}”
-              </blockquote>
+              <blockquote className="mt-3 text-white/85">“{c.quote}”</blockquote>
 
-              {/* rating */}
               <div className="mt-4 flex items-center gap-2">
                 <Stars n={c.rating} />
                 <span className="text-xs text-white/60">({c.rating}/5)</span>
