@@ -1,5 +1,6 @@
 // src/App.jsx
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 /* Layout & sections */
 import BackgroundLayer from "./components/BackgroundLayer";
@@ -29,6 +30,7 @@ import { Layout, Zap, Workflow, BookUser, Rocket, BadgeCheck } from "lucide-reac
 export default function App() {
   // ---------- Top scroll progress bar ----------
   const [progress, setProgress] = useState(0);
+  const { t } = useTranslation();
   useEffect(() => {
     const onScroll = () => {
       const h = document.documentElement;
@@ -39,6 +41,40 @@ export default function App() {
     addEventListener("scroll", onScroll, { passive: true });
     return () => removeEventListener("scroll", onScroll);
   }, []);
+
+  const workProjects = [
+    {
+      key: "asap",
+      href: "https://www.asapmobilebatteryservice.co.uk/",
+      image: "/asap.jpg",
+      tags: ["Next.js", "Tailwind", "Vercel"],
+    },
+    {
+      key: "ios",
+      href: "/fyp.html",
+      image: "/mobile.jpg",
+      tags: ["SwiftUI", "REST API", "MVVM"],
+      extraHref: "/fyp.html",
+    },
+    {
+      key: "santaloca",
+      href: "https://santa-loca-events.vercel.app/",
+      image: "/santaloca.jpg",
+      tags: ["Next.js", "Fatsoma embed", "Shopify merch"],
+    },
+  ];
+
+  const serviceCards = [
+    { key: "sites", icon: Layout },
+    { key: "motion", icon: Zap },
+    { key: "integrations", icon: Workflow },
+  ];
+
+  const process = t("process", { returnObjects: true });
+  const processSteps = process.steps || [];
+  const processIcons = [BookUser, Layout, Rocket, BadgeCheck];
+  const aboutSection = t("aboutSection", { returnObjects: true });
+  const trust = t("trust", { returnObjects: true });
 
   return (
     <div className="relative min-h-screen bg-transparent text-white">
@@ -60,34 +96,30 @@ export default function App() {
       {/* ---------- Work ---------- */}
       <Section id="work" className="py-20">
         <SectionHeader
-          eyebrow="Selected Work"
-          title="Clean, fast, conversion-ready"
-          subtitle="A quick peek at builds and experiments."
+          eyebrow={t("work.eyebrow")}
+          title={t("work.title")}
+          subtitle={t("work.subtitle")}
         />
+        <p className="mx-auto mt-4 max-w-3xl px-6 text-center text-sm text-white/70">
+          {t("work.description")}
+        </p>
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
-          <WorkCard
-            title="ASAP Mobile Car Battery Replacement"
-            href="https://www.asapmobilebatteryservice.co.uk/"
-            image="/asap.jpg"
-            tags={["Next.js", "Tailwind", "Vercel"]}
-            status="wip" // faded overlay appears
-          />
-          {/* If your WorkCard supports extraHref/extraLabel, this button will show;
-              if not, it's harmless to leave these props in. */}
-          <WorkCard
-            title="Battery Lookup iOS App"
-            href="#"
-            image="/mobile.jpg"
-            tags={["SwiftUI", "REST API", "MVVM"]}
-            extraHref="/fyp.html"
-            extraLabel="Read the FYP report"
-          />
-          <WorkCard
-            title="Experimental UI – Glass + Motion"
-            href="#"
-            image="/ico.jpg"
-            tags={["Framer Motion", "Particles", "Glass UI"]}
-          />
+          {workProjects.map((project) => {
+            const extraLabel = project.extraHref ? t(`work.projects.${project.key}.extraLabel`, { defaultValue: "" }) : "";
+            return (
+              <WorkCard
+                key={project.key}
+                title={t(`work.projects.${project.key}.title`)}
+                href={project.href}
+                image={project.image}
+                tags={project.tags}
+                description={t(`work.projects.${project.key}.description`)}
+                result={t(`work.projects.${project.key}.result`)}
+                extraHref={project.extraHref}
+                extraLabel={extraLabel || undefined}
+              />
+            );
+          })}
         </div>
       </Section>
 
@@ -97,57 +129,47 @@ export default function App() {
       {/* ---------- Services ---------- */}
       <Section id="services" className="py-20">
         <SectionHeader
-          eyebrow="Services"
-          title="Everything you need to launch or level-up"
-          subtitle="Design → Build → Ship. Simple, transparent pricing."
+          eyebrow={t("services.eyebrow")}
+          title={t("services.title")}
+          subtitle={t("services.subtitle")}
         />
+        <p className="mx-auto mt-4 max-w-3xl px-6 text-center text-sm text-white/70">
+          {t("services.localizationNote")}
+        </p>
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
-          <ServiceCard
-            icon={Layout}
-            title="High-impact sites"
-            desc="Single or multi-section sites built for clarity and conversions. Responsive, accessible, fast."
-            points={["Tailored UX & copy guidance", "Performance budget", "SEO essentials"]}
-          />
-          <ServiceCard
-            icon={Zap}
-            title="Interactions & motion"
-            desc="Tasteful micro-interactions, parallax, and particle effects that feel alive—never gimmicky."
-            points={["Framer Motion", "Scroll reveals", "Magnetic buttons"]}
-          />
-          <ServiceCard
-            icon={Workflow}
-            title="Integrations"
-            desc="Forms, analytics, CMS, email capture, booking, payments—done right and instrumented."
-            points={["Stripe/Checkout", "Calendly", "Netlify/Vercel"]}
-          />
+          {serviceCards.map((card) => (
+            <ServiceCard
+              key={card.key}
+              icon={card.icon}
+              title={t(`services.cards.${card.key}.title`)}
+              desc={t(`services.cards.${card.key}.desc`)}
+              points={t(`services.cards.${card.key}.points`, { returnObjects: true })}
+            />
+          ))}
         </div>
       </Section>
 
       {/* ---------- Process ---------- */}
       <Section id="process" className="py-20">
         <SectionHeader
-          eyebrow="Process"
-          title="A smooth 4-step flow"
-          subtitle="No fluff. Clear comms, quick iterations, on-time delivery."
+          eyebrow={process.eyebrow}
+          title={process.title}
+          subtitle={process.subtitle}
         />
         <ol className="mx-auto grid max-w-5xl grid-cols-1 gap-6 px-4 md:grid-cols-4">
-          {[
-            { icon: BookUser, title: "Discover", copy: "Quick intro call, goals, scope, timeline." },
-            { icon: Layout, title: "Design", copy: "Wireframe → polished UI in your brand colors." },
-            { icon: Rocket, title: "Build", copy: "Production-ready React + Tailwind, responsive and fast." },
-            { icon: BadgeCheck, title: "Ship", copy: "Deploy to Vercel with analytics + handover video." },
-          ].map((s, i) => (
-            <ProcessCard key={i} {...s} index={i + 1} />
-          ))}
+          {processSteps.map((step, i) => {
+            const Icon = processIcons[i] || BookUser;
+            return <ProcessCard key={step.title} icon={Icon} title={step.title} copy={step.copy} index={i + 1} />;
+          })}
         </ol>
       </Section>
 
       {/* ---------- About ---------- */}
       <Section id="about" className="py-20">
         <SectionHeader
-          eyebrow="About Tony"
-          title="Computing grad & freelance web dev"
-          subtitle="I build clean, modern sites that convert."
+          eyebrow={aboutSection.eyebrow}
+          title={aboutSection.title}
+          subtitle={aboutSection.subtitle}
         />
         <AboutBlock />
       </Section>
@@ -155,20 +177,18 @@ export default function App() {
       {/* ---------- Trust points ---------- */}
       <Section id="trust" className="py-20">
         <SectionHeader
-          eyebrow="Why RenekSites"
-          title="People like working with me"
-          subtitle="Clear comms, high craft, reliable delivery."
+          eyebrow={trust.eyebrow}
+          title={trust.title}
+          subtitle={trust.subtitle}
         />
         <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
-          {["Snappy turnarounds", "Pixel-perfect execution", "Detailed handover & docs"].map((line, i) => (
+          {(trust.bullets || []).map((line, i) => (
             <div key={i} className="rounded-2xl bg-white/5 p-6 backdrop-blur-md">
               <div className="mb-4 flex items-center gap-3 text-emerald-300">
                 <span aria-hidden="true">★</span>
                 <span className="font-medium">{line}</span>
               </div>
-              <p className="text-sm text-white/70">
-                From scoping to launch, you get crisp updates and a site that feels premium on every screen.
-              </p>
+              <p className="text-sm text-white/70">{trust.paragraph}</p>
             </div>
           ))}
         </div>

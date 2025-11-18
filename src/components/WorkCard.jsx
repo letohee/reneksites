@@ -7,9 +7,22 @@ import { ExternalLink } from "lucide-react";
  * - href: string
  * - image: string (project thumbnail)
  * - tags: string[] (optional)
+ * - description: string (optional)
+ * - result: string (optional)
+ * - extraHref / extraLabel: optional CTA below description
  * - status: "wip" | "done" | undefined  -> when "wip", an overlay with /work.png is shown
  */
-const WorkCard = ({ title, href, image, tags = [], status }) => (
+const WorkCard = ({
+  title,
+  href,
+  image,
+  tags = [],
+  description,
+  result,
+  extraHref,
+  extraLabel,
+  status,
+}) => (
   <motion.a
     href={href}
     target="_blank"
@@ -62,6 +75,18 @@ const WorkCard = ({ title, href, image, tags = [], status }) => (
           </span>
         ))}
       </div>
+      {description && <p className="text-sm text-white/70">{description}</p>}
+      {extraHref && extraLabel && (
+        <a
+          href={extraHref}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1 text-xs font-medium text-emerald-300 hover:text-emerald-200"
+        >
+          {extraLabel} <ExternalLink size={12} />
+        </a>
+      )}
+      {result && <p className="text-xs font-semibold uppercase tracking-wide text-emerald-300">{result}</p>}
     </div>
   </motion.a>
 );

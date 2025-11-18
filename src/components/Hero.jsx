@@ -1,5 +1,6 @@
 // Hero.jsx
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import useSlideIn from "./useSlideIn";
 import MagneticButton from "./MagneticButton";
 import {
@@ -35,49 +36,43 @@ export function Hero() {
 
 export function HeroCopy() {
   const { ref, inView, variants } = useSlideIn();
+  const { t } = useTranslation();
+  const heroSegments = t("hero.titleSegments", { returnObjects: true });
+  const heroBadges = t("hero.badges", { returnObjects: true });
   return (
     <motion.div ref={ref} variants={variants} initial="hidden" animate={inView ? "show" : "hidden"}>
       <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80 backdrop-blur">
-        <Rocket size={14} /> Launch in weeks, not months
+        <Rocket size={14} /> {t("hero.badge")}
       </span>
 
       {/* Heading — SAME styles, with typewriter inside */}
       <h1 className="mt-5 text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl">
         <Typewriter
           className="inline"
-          segments={[
-            { text: "Websites that feel ", className: "" },
-            {
-              text: "premium",
-              className:
-                "bg-gradient-to-r from-emerald-300 to-white bg-clip-text text-transparent",
-            },
-            { text: " and convert.", className: "" },
-          ]}
+          segments={heroSegments}
           speed={26}
           startDelay={250}
         />
       </h1>
 
-      <p className="mt-4 max-w-xl text-white/80">
-        I’m Tony — a Computing graduate and freelance web developer. I build fast, modern
-        websites with crisp motion and clear messaging.
-      </p>
+      <p className="mt-4 max-w-xl text-white/80">{t("hero.intro")}</p>
+      <p className="mt-2 max-w-lg text-sm text-white/70">{t("hero.subtext")}</p>
 
       <div className="mt-6 flex flex-wrap items-center gap-3">
         <MagneticButton as="a" href="#contact" className="rounded-full bg-emerald-500 text-white hover:bg-emerald-400">
-          Get a quote <MoveRight size={16} className="transition group-hover:translate-x-0.5" />
+          {t("hero.primaryCta")}{" "}
+          <MoveRight size={16} className="transition group-hover:translate-x-0.5" />
         </MagneticButton>
         <MagneticButton as="a" href="#work" className="rounded-full border border-white/20 bg-white/5 text-white hover:bg-white/10">
-          See work <ArrowUpRight size={16} />
+          {t("hero.secondaryCta")} <ArrowUpRight size={16} />
         </MagneticButton>
       </div>
 
       <ul className="mt-6 flex flex-wrap items-center gap-4 text-xs text-white/60">
-        {["React + Tailwind", "Framer Motion", "Vercel deploy"].map((t) => (
-          <li key={t} className="inline-flex items-center gap-2">
+        {heroBadges.map((label) => (
+          <li key={label} className="inline-flex items-center gap-2">
             <CheckCircle2 className="text-emerald-300" size={14} />
-            {t}
+            {label}
           </li>
         ))}
       </ul>

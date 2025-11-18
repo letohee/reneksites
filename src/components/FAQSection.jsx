@@ -1,38 +1,8 @@
 // FAQSection.jsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { ChevronDown } from "lucide-react";
-
-const faqs = [
-  {
-    q: "How long does a typical website take?",
-    a: "Starter landing pages are usually 1–2 weeks. Business sites (3–5 pages) are 2–4 weeks depending on content and feedback speed.",
-  },
-  {
-    q: "What does your pricing include?",
-    a: "Design + build in React/Tailwind, responsive layouts, performance pass, basic SEO setup, deploy to Vercel, and a short handover video.",
-  },
-  {
-    q: "Do you offer revisions?",
-    a: "Yes—every package includes a feedback round per milestone (design and build). Extra rounds are possible if needed.",
-  },
-  {
-    q: "Do I need to provide copy and images?",
-    a: "You can provide them, or I can help refine copy and source/licence images. Clear, simple copy converts best.",
-  },
-  {
-    q: "Who hosts the site?",
-    a: "I deploy to Vercel (fast, reliable, global CDN). You can keep ownership and billing on your own Vercel account if you prefer.",
-  },
-  {
-    q: "Do I own the site after launch?",
-    a: "Yes—100%. You’ll receive the GitHub repo and full deployment access.",
-  },
-  {
-    q: "How do we start?",
-    a: "Email me at tonkatabachev@gmail.com or call +44 7908 894226. We’ll do a 15-minute intro to scope goals and timelines.",
-  },
-];
 
 function Item({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -66,18 +36,16 @@ function Item({ q, a }) {
 }
 
 export default function FAQSection() {
+  const { t } = useTranslation();
+  const faqs = t("faq.items", { returnObjects: true });
   return (
     <section id="faq" className="py-20">
       <div className="mx-auto max-w-4xl px-4 text-center">
-        <p className="text-xs uppercase tracking-widest text-emerald-300/80">FAQ</p>
+        <p className="text-xs uppercase tracking-widest text-emerald-300/80">{t("faq.eyebrow")}</p>
         <h2 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
-          Questions people ask
+          {t("faq.title")}
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-white/75">
-          If you don’t see your question here, email{" "}
-          <a className="underline decoration-emerald-400/50 underline-offset-4 hover:text-white"
-             href="mailto:tonkatabachev@gmail.com">tonkatabachev@gmail.com</a>.
-        </p>
+        <p className="mx-auto mt-3 max-w-2xl text-white/75">{t("faq.description")}</p>
       </div>
 
       <div className="mx-auto mt-8 grid max-w-4xl gap-3 px-4">
