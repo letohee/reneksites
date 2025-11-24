@@ -72,7 +72,7 @@ export default function AnalyticsShowcase() {
               <p className="mb-2 text-sm text-white/70">Top sources</p>
               <ul className="space-y-1 text-sm text-white/80">
                 <li>Google — 48%</li>
-                <li>Direct — 31%</li>
+                <li>Direct — 30%</li>
                 <li>LinkedIn — 12%</li>
                 <li>Instagram — 6%</li>
                 <li>Referrals — 3%</li>
