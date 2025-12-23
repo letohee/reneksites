@@ -49,19 +49,13 @@ export default function Header() {
           <div className="flex flex-col items-end gap-2 text-right">
             <MagneticButton
               as="a"
-              href="tel:+359876877095"
+              href="tel:+44790884226"
               className="rounded-full bg-emerald-500 text-sm text-white hover:bg-emerald-400"
             >
-              <Phone size={16} /> {t("header.ctaBgButton")}
+              <Phone size={16} /> {t("header.ctaPrimary")}
             </MagneticButton>
             <div className="flex items-center gap-3 text-xs text-white/70">
-              <a href="tel:+359876877095" className="hover:text-white">
-                {t("header.bgLabel")}
-              </a>
-              <span className="text-white/30">|</span>
-              <a href="tel:+447908894226" className="hover:text-white">
-                {t("header.ukLabel")}
-              </a>
+              <a href="tel:+44790884226" className="hover:text-white">{t("header.ukLabel")}</a>
             </div>
           </div>
         </div>

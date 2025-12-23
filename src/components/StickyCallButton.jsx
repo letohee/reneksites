@@ -1,9 +1,8 @@
 import { useTranslation } from "react-i18next";
 
 export default function StickyCallButton() {
-  const { t, i18n } = useTranslation();
-  const isBg = i18n.language === "bg";
-  const phone = isBg ? "+359876877095" : "+447908894226";
+  const { t } = useTranslation();
+  const phone = "+44790884226";
   return (
     <a
       href={`tel:${phone}`}

@@ -40,7 +40,7 @@ export default function AboutBlock() {
         </ul>
         <div className="mt-6 flex gap-3">
           <MagneticButton as="a" href="mailto:tonkatabachev@gmail.com" className="rounded-full bg-emerald-500 text-white hover:bg-emerald-400"><Mail size={16}/> {t("aboutBlock.buttons.email")}</MagneticButton>
-          <MagneticButton as="a" href="tel:+447908894226" className="rounded-full border border-white/20 bg-white/5 text-white hover:bg-white/10"><Phone size={16}/> {t("aboutBlock.buttons.call")}</MagneticButton>
+          <MagneticButton as="a" href="tel:+44790884226" className="rounded-full border border-white/20 bg-white/5 text-white hover:bg-white/10"><Phone size={16}/> {t("aboutBlock.buttons.call")}</MagneticButton>
         </div>
       </motion.div>
     </div>

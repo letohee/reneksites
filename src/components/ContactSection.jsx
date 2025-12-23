@@ -101,11 +101,8 @@ export default function ContactSection() {
               <a href="mailto:tonkatabachev@gmail.com" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 hover:bg-white/10">
                 <Mail size={14} /> tonkatabachev@gmail.com
               </a>
-              <a href="tel:+447908894226" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 hover:bg-white/10">
-                <Phone size={14} /> +44 7908 894226 (UK)
-              </a>
-              <a href="tel:+359876877095" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 hover:bg-white/10">
-                <Phone size={14} /> +359 876 877 095 (BG)
+              <a href="tel:+44790884226" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 hover:bg-white/10">
+                <Phone size={14} /> 0790884226 (UK)
               </a>
             </div>
           </div>

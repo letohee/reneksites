@@ -15,9 +15,8 @@ const resources = {
         contact: "Contact",
       },
       header: {
-        ctaBgButton: "Call (BG line)",
-        bgLabel: "BG: +359 876 877 095",
-        ukLabel: "UK: +44 7908 894226",
+        ctaPrimary: "Call 0790884226",
+        ukLabel: "0790884226",
       },
       languageSwitcher: {
         label: "Change language",
@@ -230,7 +229,7 @@ const resources = {
           },
           {
             q: "How do we start?",
-            a: "Email me at tonkatabachev@gmail.com or call +44 7908 894226 (UK) / +359 876 877 095 (BG). We’ll do a 15-minute intro to scope goals and timelines.",
+            a: "Email me at tonkatabachev@gmail.com or call 0790884226 (UK). We’ll do a 15-minute intro to scope goals and timelines.",
           },
           {
             q: "Do you offer support in Bulgarian?",
@@ -251,9 +250,8 @@ const resources = {
         contact: "Контакт",
       },
       header: {
-        ctaBgButton: "Обади се (BG)",
-        bgLabel: "BG: +359 876 877 095",
-        ukLabel: "UK: +44 7908 894226",
+        ctaPrimary: "Обади се на 0790884226",
+        ukLabel: "0790884226",
       },
       languageSwitcher: {
         label: "Смени езика",
@@ -467,7 +465,7 @@ const resources = {
           },
           {
             q: "Как започваме?",
-            a: "Пиши на tonkatabachev@gmail.com или звънни на +44 7908 894226 (UK) / +359 876 877 095 (BG). Ще направим 15-минутен call за цели и срокове.",
+            a: "Пиши на tonkatabachev@gmail.com или звънни на 0790884226 (UK). Ще направим 15-минутен call за цели и срокове.",
           },
           {
             q: "Предлагаш ли поддръжка на български?",
@@ -480,10 +478,7 @@ const resources = {
 };
 
 const defaultLang =
-  (typeof window !== "undefined" && localStorage.getItem(STORAGE_KEY)) ||
-  (typeof window !== "undefined" && window.navigator.language?.startsWith("bg")
-    ? "bg"
-    : "en");
+  (typeof window !== "undefined" && localStorage.getItem(STORAGE_KEY)) || "en";
 
 i18n.use(initReactI18next).init({
   resources,

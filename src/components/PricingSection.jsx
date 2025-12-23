@@ -57,7 +57,7 @@ export default function PricingSection() {
                 </MagneticButton>
                 <MagneticButton
                   as="a"
-                  href="tel:+447908894226"
+                  href="tel:+44790884226"
                   className={`rounded-full ${
                     plan.highlight
                       ? "border border-white/20 bg-white/5 text-white hover:bg-white/10"
